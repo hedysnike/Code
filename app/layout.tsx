@@ -1,3 +1,4 @@
+import { Sidebar } from './Sidebar'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -20,7 +21,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.variable}>{children}</body>
+      <body className={inter.variable}>
+      <div className="flex">
+        
+        <div className="hidden lg:flex">
+      <Sidebar />
+        </div>
+
+      <div className="lg:w-[calc(100%_-_225px)] bg-black">
+      {children}
+      </div>
+
+        </div>
+        </body>
     </html>
   )
 }
