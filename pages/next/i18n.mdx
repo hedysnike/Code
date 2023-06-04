@@ -1,7 +1,7 @@
 # NextI18Next
 
 
-```mjs filename="next.config.mjs" {3} copy
+```mjs filename="next.config.mjs"  copy
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
@@ -16,7 +16,7 @@ const config = {
 };
 export default config;
 ```
-```js filename="next-i18next.config.js" {3} copy
+```js filename="next-i18next.config.js"  copy
 const path = require('path');
 
 module.exports = {
@@ -32,7 +32,7 @@ module.exports = {
 ```
 
 
-```tsx filename="App.tsx" {3} copy
+```tsx filename="App.tsx"  copy
 import '@/styles/globals.css'
 import { appWithTranslation } from 'next-i18next';
 import type { AppType } from 'next/app'
@@ -50,7 +50,7 @@ export default appWithTranslation(MyApp);
 ```
 
 
-```tsx filename="Index Page Example" {3} copy
+```tsx filename="Index Page Example"  copy
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -99,7 +99,7 @@ export async function getStaticProps({ locale }: { locale: any }) {
 }
 ```
 
-```json filename="common.json Example for I18N" {3} copy
+```json filename="common.json Example for I18N"  copy
 {
     "home": "home",
     "Hello World": "Hello World0"      
