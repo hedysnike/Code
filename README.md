@@ -1,1 +1,1 @@
-Website for Storing and retriving code fast
+Nextra WebPage for Accessing commonly used Code quickly.
