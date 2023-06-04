@@ -1,1 +1,29 @@
 empty
+
+```ts filename="db.ts"  copy
+import { NextApiRequest, NextApiResponse } from "next";
+import { prisma } from "@/server";
+
+export default async function login(req: NextApiRequest, res: NextApiResponse) {
+  const { Your const } = req.body;
+
+  const user = await prisma.user.findFirst({
+    where: { Your Const },
+  });
+
+  if (!user) {
+    res.status(404).json({ message: "userNotFound" });
+    return;
+  }
+
+  if (user.password !== password) {
+    res.status(401).json({ message: "passwordincorrect" });
+    return;
+  }
+
+  res.setHeader("Set-Cookie", `token=${user.token}; path=/; HttpOnly`);
+
+  res.status(200).json({ user });
+}
+
+```

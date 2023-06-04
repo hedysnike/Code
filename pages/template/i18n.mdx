@@ -113,4 +113,32 @@ export async function getStaticProps({ locale }: { locale: any }) {
   };
 }
 ```
+FOR SSG
+```tsx filename="Index.tsx"  copy
+export async function getStaticProps({ locale }: { locale: any }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common", "footer"])),
+    },
+  };
+}
+```
 
+FOR SSR
+```tsx filename="[id].tsx"  copy
+export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+  const { locale } = context;
+  
+  if (!locale) {
+    return {
+      notFound: true,
+    };
+  } 
+  
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['home', 'common']))
+    }
+  };
+};
+```
