@@ -2,7 +2,7 @@ import React from 'react'
 import { DocsThemeConfig } from 'nextra-theme-docs'
 
 const config: DocsThemeConfig = {
-  logo: <span>My Project</span>,
+  logo: <span>CODE</span>,
   project: {
     link: 'https://github.com/hedysnika',
   },
@@ -11,7 +11,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/hedysnika',
   footer: {
-    text: 'Nextra Docs Template',
+    text: 'Code · Created by NIKE DEV',
   },
 }
 

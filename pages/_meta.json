@@ -1,11 +1,14 @@
 {
   "index": "HedysNike Code",
-  "advanced": "Advanced",
   "next": "next.js",
   "about": {
     "title": "About",
     "type": "page"
   },
+  "hello": {
+    "title": "About",
+    "type": "page"
+    },
   "contact": {
     "title": "Contact ↗",
     "type": "page",
