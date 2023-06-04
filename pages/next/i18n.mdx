@@ -1,8 +1,7 @@
 # NextI18Next
 
 
-next.config.mjs
-```
+```mjs filename="next.config.mjs" {3} copy
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
@@ -17,8 +16,7 @@ const config = {
 };
 export default config;
 ```
-next-i18next.config.js
-```
+```js filename="next-i18next.config.js" {3} copy
 const path = require('path');
 
 module.exports = {
@@ -32,8 +30,9 @@ module.exports = {
     localePath: path.resolve('./public/locales'),
   };
 ```
-App.tsx
-```
+
+
+```tsx filename="App.tsx" {3} copy
 import '@/styles/globals.css'
 import { appWithTranslation } from 'next-i18next';
 import type { AppType } from 'next/app'
@@ -49,17 +48,20 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 
 export default appWithTranslation(MyApp);
 ```
-Index Page Example
-```
+
+
+```tsx filename="Index Page Example" {3} copy
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
+
 export default function Home() {
   const { t } = useTranslation("common");
   const [localeChanged, setLocaleChanged] = useState(false);
   const router = useRouter();
+
 
   useEffect(() => {
     if (localeChanged) {    
@@ -96,8 +98,8 @@ export async function getStaticProps({ locale }: { locale: any }) {
   };
 }
 ```
-common.json Example for I18N
-```
+
+```json filename="common.json Example for I18N" {3} copy
 {
     "home": "home",
     "Hello World": "Hello World0"      
