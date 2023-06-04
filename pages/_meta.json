@@ -3,5 +3,6 @@
   "libraries": "Libraries",
   "template": "Template",
   "frontend": "Frontend",
+  "Prisma": "Prisma",
   "Backend": "Backend"
 }
