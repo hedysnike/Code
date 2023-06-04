@@ -17,7 +17,7 @@ const config = {
 };
 export default config;
 ```
-
+next-i18next.config.js
 ```
 const path = require('path');
 
@@ -32,7 +32,7 @@ module.exports = {
     localePath: path.resolve('./public/locales'),
   };
 ```
-
+App.tsx
 ```
 import '@/styles/globals.css'
 import { appWithTranslation } from 'next-i18next';
@@ -49,7 +49,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 
 export default appWithTranslation(MyApp);
 ```
-
+Index Page Example
 ```
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
@@ -96,7 +96,7 @@ export async function getStaticProps({ locale }: { locale: any }) {
   };
 }
 ```
-
+common.json Example for I18N
 ```
 {
     "home": "home",
