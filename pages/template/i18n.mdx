@@ -1,5 +1,20 @@
 # NextI18Next
 
+Required Packages:
+
+pnpm i i18next next-i18next react-i18next
+
+Structure:
+Public/locales/"LANGUAGES"/common.json
+
+
+```json filename="common.json Example for I18N"  copy
+{
+    "home": "home",
+    "Hello World": "Hello World0"      
+}  
+```
+
 
 ```js filename="next.config.mjs"  copy
 /** @type {import("next").NextConfig} */
@@ -99,9 +114,3 @@ export async function getStaticProps({ locale }: { locale: any }) {
 }
 ```
 
-```json filename="common.json Example for I18N"  copy
-{
-    "home": "home",
-    "Hello World": "Hello World0"      
-}  
-```
