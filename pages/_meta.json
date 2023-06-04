@@ -1,5 +1,7 @@
 {
   "index": "Index",
   "example": "Example",
-  "template": "Template"
+  "template": "Template",
+  "frontend": "Frontend",
+  "Backend": "Backend"
 }
