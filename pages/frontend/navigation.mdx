@@ -1,1 +1,37 @@
-empty
+navgationn example NextI18Next
+
+```tsx filename="lib/hooks/useExaple.tsx"  copy
+STYLE:
+  .mantine-Drawer-inner	{
+    margin-top: 50px;
+  }
+
+  .mantine-Drawer-content {
+    background-color: #161618;
+  }
+
+
+    const [opened, { toggle }] = useDisclosure(false);
+
+    const handleToggle = useCallback(() => {
+      toggle();
+    }, [opened, toggle]);
+
+            <Burger
+            className="ml-5 mt-[12px] md:ml-0 md:mt-0 md:hidden"
+            onClick={handleToggle}
+            color="white"
+            size={22}
+            opened={opened}
+            />
+
+<Drawer size="70%" opened={opened} onClose={() => toggle()} withCloseButton={false} padding={0} lockScroll={false}>
+
+  <div className="w-full h-auto text-white">
+    <div className="flex flex-col items-center w-full h-auto pt-5 gap-y-4">
+
+
+    </div>
+  </div>
+</Drawer>
+```
