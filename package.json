@@ -1,7 +1,7 @@
 {
   "name": "code",
   "version": "0.0.1",
-  "description": "My personal code storing space",
+  "description": "My code storing space",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

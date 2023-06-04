@@ -8,7 +8,7 @@ const config: DocsThemeConfig = {
   },
   docsRepositoryBase: 'https://github.com/hedysnika',
   footer: {
-    text: 'Code · Created by NIKE DEV',
+    text: 'Code · by Hedys Nike',
   },
 }
 
