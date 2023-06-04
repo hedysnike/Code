@@ -1,9 +1,80 @@
+
+
+Required Script:
+"cdk": "cdk",
+
+Example:
+```json filename="package.json"  copy
+  "scripts": {
+    "cdk": "cdk",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+```
+
+Required Packages:
+  "dependencies": {
+    "aws-cdk-lib": "2.27.0",
+  }
+
+
+
+
 ```env filename=".env"  copy
 AWS_ACCESS_KEY_ID=yourkey
 AWS_SECRET_ACCESS_KEY=yourkey
 AWS_REGION=eu-central-1 or your AWS Region
 BUCKET_NAME=Your Bucket name
 ```
+
+
+```ts filename="bin/aws-s3.ts"  copy
+{
+  "app": "npx ts-node --prefer-ts-exts -P tsconfig-aws.json bin/aws-s3.ts",
+  "watch": {
+    "include": ["**"],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "**/*.d.ts",
+      "**/*.js",
+      "tsconfig.json",
+      "package*.json",
+      "pnpm-lock.yaml",
+      "node_modules",
+      "test"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
+    "@aws-cdk/core:stackRelativeExports": true,
+    "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
+    "@aws-cdk/aws-lambda:recognizeVersionProps": true,
+    "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
+    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true,
+    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
+    "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
+    "@aws-cdk/core:checkSecretUsage": true,
+    "@aws-cdk/aws-iam:minimizePolicies": true,
+    "@aws-cdk/core:target-partitions": ["aws", "aws-cn"]
+  }
+}
+```
+
+
+```ts filename="bin/aws-s3.ts"  copy
+#!/usr/bin/env node
+import 'source-map-support/register'
+import * as cdk from 'aws-cdk-lib'
+import { AwsS3Stack } from '../lib/aws-s3-stack'
+
+const app = new cdk.App()
+new AwsS3Stack(app, 'AwsS3Stack', {})
+
+```
+
 
 ```ts filename="lib/aws-s3-stack.ts"  copy
 import * as iam from 'aws-cdk-lib/aws-iam'
@@ -115,47 +186,5 @@ Front End upload function example for photos
     useEffect(() => {
     uploadPhoto(selectedFile);
   }, [selectedFile]);
-
-```
-
-Front End upload function example for Songs
-```tsx filename="index.tsx"  copy
-  const [uploadedMusicUrl, setUploadedMusicUrl ] = useState("")
-  const [selectedSong, setSelectedSong] = useState<File | null>(null);
-
-
-  const uploadSong = async (file: File | null) => {
-    if (!file) return;
-
-    const filename = encodeURIComponent(file.name);
-    const fileType = encodeURIComponent(file.type);
-
-    const res = await fetch(
-      `/api/upload-song?file=${filename}&fileType=${fileType}`
-    );
-    const { url, fields } = await res.json();
-    const formData = new FormData();
-
-    Object.entries({ ...fields, file }).forEach(([key, value]) => {
-      formData.append(key, value as string);
-    });
-
-    const upload = await fetch(url, {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (upload.ok) {
-      console.log('Uploaded successfully!');
-      const audioUrl = `https://audioplayertest1.s3.amazonaws.com/${filename}`;
-      setUploadedMusicUrl(audioUrl);
-    } else {
-      console.error('Upload failed.');
-    }
-  };
-
-    useEffect(() => {
-    uploadSong(selectedSong);
-  }, [selectedSong]);
 
 ```

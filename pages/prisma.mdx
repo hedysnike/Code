@@ -1,28 +1,48 @@
 
+Install Packages:
+
+pnpm install -g prisma
+pnpm install @prisma/client
+
+Required scripts
+    "postinstall": "prisma generate",
+
+example:
+```json filename="package.json"  copy
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+```
+
+
+For MongoDB:
+```prisma filename="schema.prisma"  copy
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+```
 
 
 ```ts filename="db.ts"  copy
-import prisma from yourr server
-import { type NextApiRequest, type NextApiResponse } from "next";
+import { PrismaClient } from '@prisma/client'
 
-
-export default async function user(req: NextApiRequest, res: NextApiResponse) {
-  const token = req.cookies.token;
-
-  if (!token) {
-    res.status(401).json({ message: "Not authorized" });
-    return;
-  }
-
-  const user = await prisma.user.findFirst({
-    where: { token: token },
-  });
-
-  if (!user) {
-    res.status(404).json({ message: "User not found" });
-    return;
-  }
-
-  res.status(200).json({ user });
+const globalForPrisma = global as unknown as {
+  prisma: PrismaClient | undefined
 }
+
+export const prisma =
+  globalForPrisma.prisma ??
+  new PrismaClient({
+    log: ['query'],
+  })
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 ```

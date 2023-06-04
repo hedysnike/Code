@@ -13,7 +13,7 @@
   },
   "author": "Hedys Nike",
   "license": "MIT",
-  "homepage": "localhost:3000",
+  "homepage": "https://code.nikko.dev/",
   "dependencies": {
     "next": "^13.0.6",
     "nextra": "latest",
