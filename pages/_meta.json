@@ -1,18 +1,3 @@
 {
-  "index": "HedysNike Code",
-  "next": "next.js",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
-  "hello": {
-    "title": "okay",
-    "type": "page"
-    },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://www.linkedin.com/in/nikko53214/",
-    "newWindow": true
-  }
+  "index": "Index"
 }
