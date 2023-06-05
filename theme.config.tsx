@@ -4,7 +4,7 @@ import { DocsThemeConfig } from 'nextra-theme-docs'
 const config: DocsThemeConfig = {
   logo: <span>CODE</span>,
   project: {
-    link: 'https://github.com/hedysnika',
+    link: 'https://code.nikko.dev/',
   },
   docsRepositoryBase: 'https://github.com/hedysnika',
   footer: {
