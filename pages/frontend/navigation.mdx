@@ -1,11 +1,9 @@
-navgationn example NextI18Next
-
-```tsx filename="dashboard"  copy
+navgation examples
 
 requirements:
 mantine
 
-STYLE:
+Global Style:
   .mantine-Drawer-inner	{
     margin-top: 50px;
   }
@@ -15,6 +13,7 @@ STYLE:
   }
 
 
+```tsx filename="dashboard"  copy
     const [opened, { toggle }] = useDisclosure(false);
 
     const handleToggle = useCallback(() => {
