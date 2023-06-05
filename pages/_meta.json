@@ -1,8 +1,8 @@
 {
-  "index": "Index",
-  "libraries": "Libraries",
-  "template": "Template",
-  "frontend": "Frontend",
-  "prisma": "Prisma",
-  "backend": "Backend"
+  "Index": "Index",
+  "Libraries": "Libraries",
+  "Template": "Template",
+  "Frontend": "Frontend",
+  "Prisma": "Prisma",
+  "Backend": "Backend"
 }
