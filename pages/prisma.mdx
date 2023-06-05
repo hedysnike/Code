@@ -1,15 +1,20 @@
+## Prisma
+``` copy
+pnpm install -g prisma 
+```
 
-Install Packages:
-
-pnpm install -g prisma
-pnpm install @prisma/client
+``` copy
+pnpm install @prisma/client 
+```
 
 Required scripts
-    "postinstall": "prisma generate",
-
+```
+"postinstall": "prisma generate",
+```
 example:
 ```json filename="package.json"  copy
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "next",
     "build": "next build",
     "start": "next start",
