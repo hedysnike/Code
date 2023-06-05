@@ -3,33 +3,36 @@ navgation examples
 requirements:
 mantine
 
-Global Style:
-  .mantine-Drawer-inner	{
-    margin-top: 50px;
-  }
+Style:
 
-  .mantine-Drawer-content {
-    background-color: #161618;
-  }
+```css filename="styles/global.css"  copy
+.mantine-Drawer-inner {
+  margin-top: 50px;
+}
 
+.mantine-Drawer-content {
+  background-color: #161618;
+}
+```
 
 ```tsx filename="dashboard"  copy
-    const [opened, { toggle }] = useDisclosure(false);
+const [opened, { toggle }] = useDisclosure(false);
 
-    const handleToggle = useCallback(() => {
-      toggle();
-    }, [opened, toggle]);
+const handleToggle = useCallback(() => {
+toggle();
+}, [opened, toggle]);
 
-            <Burger
-            className="ml-5 mt-[12px] md:ml-0 md:mt-0 md:hidden"
-            onClick={handleToggle}
-            color="white"
-            size={22}
-            opened={opened}
-            />
+
+YOUR RETURN
+<Burger
+className="ml-5 mt-[12px] md:ml-0 md:mt-0 md:hidden"
+onClick={handleToggle}
+color="white"
+size={22}
+opened={opened}
+/>
 
 <Drawer size="70%" opened={opened} onClose={() => toggle()} withCloseButton={false} padding={0} lockScroll={false}>
-
   <div className="w-full h-auto text-white">
     <div className="flex flex-col items-center w-full h-auto pt-5 gap-y-4">
 
