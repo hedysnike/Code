@@ -1,0 +1,44 @@
+
+```tsx filename="lib/hooks/useExaple.tsx"  copy
+interface ImageCardProps extends Omit<ImageProps, 'src' | 'onLoadingComplete'> {
+  src: StaticImageData
+  onLoadingComplete: (src: string) => void
+}
+
+const ImageCardWithOffset = memo<ImageCardProps>(function ImageCard({
+  onLoadingComplete,
+  src,
+  alt,
+  ...props
+}) {
+  return (
+    <div className="shadow bg-white rounded h-64 w-64 relative">
+      <Image
+        {...props}
+        src={src}
+        alt={alt}
+        onLoadingComplete={() => onLoadingComplete(src.src)}
+      />
+    </div>
+  )
+})
+
+
+DEFAULT FUNCTION
+  const [loaded, setLoaded] = useState<string[]>([])
+
+  const handleLoaded = useCallback(
+    (color: string) => setLoaded((loaded) => loaded.concat(color)),
+    []
+  )
+
+  Return
+
+            <ImageCardWithOffset
+            onLoadingComplete={handleLoaded}
+            src={logoGreen}
+            alt="Vercel logo"
+            lazyBoundary="20px"
+          />
+
+```
