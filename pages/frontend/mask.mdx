@@ -3,6 +3,19 @@
 pnpm i react-imask
 ```
 
+import { IMaskInput } from "react-imask";
+import styles from './imask.module.css'
+
+export function ImaskCustomInput() {
+  return (
+    <div className="">
+      <IMaskInput mask="500 00 00 00" className={styles.imask}/>
+    </div>
+  );
+}
+
+  return <ImaskCustomInput />
+          500 00 00 00 
 
 
 ```css filename="Custom Use Example Imask"  copy
