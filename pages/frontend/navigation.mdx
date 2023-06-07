@@ -1,4 +1,4 @@
-navgation examples
+navigation examples
 
 requirements:
 mantine
@@ -7,7 +7,7 @@ Style:
 
 ```css filename="styles/global.css"  copy
 .mantine-Drawer-inner {
-  margin-top: 50px;
+  margin-top: 100px;
 }
 
 .mantine-Drawer-content {
@@ -24,15 +24,16 @@ toggle();
 
 
 YOUR RETURN
-<Burger
+<button
 className="ml-5 mt-[12px] md:ml-0 md:mt-0 md:hidden"
 onClick={handleToggle}
 color="white"
 size={22}
 opened={opened}
-/>
+>
+</button>
 
-<Drawer size="70%" opened={opened} onClose={() => toggle()} withCloseButton={false} padding={0} lockScroll={false}>
+<Drawer size="80%" opened={opened} onClose={() => toggle()} withCloseButton={false} padding={0} lockScroll={false}>
   <div className="w-full h-auto text-white">
     <div className="flex flex-col items-center w-full h-auto pt-5 gap-y-4">
 
