@@ -1,0 +1,98 @@
+
+
+## Burger 1
+```tsx filename="Burger 1"  copy
+<div>
+      <button className="relative group">
+        <div className="relative flex items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all duration-200">
+          <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 group-focus:-rotate-[45deg] origin-center">
+            <div className="bg-white h-[2px] w-1/2 rounded transform transition-all duration-300 group-focus:-rotate-90 group-focus:h-[1px] origin-right delay-75 group-focus:-translate-y-[1px]"></div>
+            <div className="bg-white h-[1px] rounded"></div>
+            <div className="bg-white h-[2px] w-1/2 rounded self-end transform transition-all duration-300 group-focus:-rotate-90 group-focus:h-[1px] origin-left delay-75 group-focus:translate-y-[1px]"></div>
+          </div>
+        </div>
+      </button>
+    </div>
+```
+
+
+
+## Burger 2
+import styles from './burger.module.css'
+
+export function Burger2() {
+
+return (
+<button className={styles.relativeGroup}>
+  <div className={styles.buttonInner}>
+    <div className={styles.icon}>
+      <div className={styles.bar1}></div>
+      <div className={styles.bar2}></div>
+      <div className={styles.bar3}></div>
+
+      <div className={styles.cross}>
+        <div className={styles.crossBar}></div>
+        <div className={styles.crossBar}></div>
+      </div>
+    </div>
+  </div>
+</button>
+  );
+}
+
+ <Burger2 />
+
+```tsx filename="Burger 2"  copy
+    <div>
+      <button className="relative group">
+        <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all duration-200">
+          <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+            <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10"></div>
+            <div className="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-x-10 delay-75"></div>
+            <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-x-10 delay-150"></div>
+
+            <div className="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
+              <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
+              <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+```
+
+## Burger 3
+```tsx filename="Burger 3"  copy
+    <div>
+      <button className="relative group">
+        <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all duration-200">
+          <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+            <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:rotate-[42deg]"></div>
+            <div className="bg-white h-[2px] w-1/2 rounded transform transition-all duration-300 group-focus:-translate-x-10"></div>
+            <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:-rotate-[42deg]"></div>
+          </div>
+        </div>
+      </button>
+    </div>
+```
+
+
+## Burger 4
+```tsx filename="Burger 4"  copy
+    <div>
+      <button className="relative group">
+        <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[50px] h-[50px] transform transition-all duration-200">
+          <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
+            <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6 delay-100"></div>
+            <div className="bg-white h-[2px] w-7 rounded transform transition-all duration-300 group-focus:translate-y-6 delay-75"></div>
+            <div className="bg-white h-[2px] w-7 transform transition-all duration-300 origin-left group-focus:translate-y-6"></div>
+
+            <div className="absolute items-center justify-between transform transition-all duration-500 top-2.5 -translate-x-10 group-focus:translate-x-0 flex w-0 group-focus:w-12">
+              <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 rotate-0 delay-300 group-focus:rotate-45"></div>
+              <div className="absolute bg-white h-[2px] w-5 transform transition-all duration-500 -rotate-0 delay-300 group-focus:-rotate-45"></div>
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+```
