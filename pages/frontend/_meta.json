@@ -1,5 +1,6 @@
 { 
 "navigation": "Navigation",
 "context": "Context",
+"dnd": "Drag and Drop",
 "mask": "Mask"
 }
