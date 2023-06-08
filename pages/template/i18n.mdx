@@ -1,13 +1,11 @@
-# NextI18Next
-
-Required Packages:
+## Required Packages:
 ```
 pnpm i i18next next-i18next react-i18next
 ```
 Structure:
 Public/locales/"LANGUAGES"/common.json
 
-
+## Json Example
 ```json filename="common.json Example for I18N"  copy
 {
     "home": "home",
@@ -15,7 +13,7 @@ Public/locales/"LANGUAGES"/common.json
 }  
 ```
 
-
+## Next Config
 ```js filename="next.config.mjs"  copy
 /** @type {import("next").NextConfig} */
 const config = {
@@ -31,6 +29,8 @@ const config = {
 };
 export default config;
 ```
+
+## i18n Config 
 ```js filename="next-i18next.config.js"  copy
 const path = require('path');
 
@@ -46,7 +46,7 @@ module.exports = {
   };
 ```
 
-
+## App
 ```tsx filename="App.tsx"  copy
 import '@/styles/globals.css'
 import { appWithTranslation } from 'next-i18next';
@@ -64,7 +64,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
 export default appWithTranslation(MyApp);
 ```
 
-
+## Page Example
 ```tsx filename="Index Page Example"  copy
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
@@ -113,7 +113,8 @@ export async function getStaticProps({ locale }: { locale: any }) {
   };
 }
 ```
-FOR SSG
+
+## Props: Static Site Generation
 ```tsx filename="Index.tsx"  copy
 export async function getStaticProps({ locale }: { locale: any }) {
   return {
@@ -124,7 +125,7 @@ export async function getStaticProps({ locale }: { locale: any }) {
 }
 ```
 
-FOR SSR
+## Props Server-side Rendering
 ```tsx filename="[id].tsx"  copy
 export const getServerSideProps = async (context: GetServerSidePropsContext) => {
   const { locale } = context;
