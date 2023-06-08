@@ -1,4 +1,4 @@
-## Prisma
+## Installing Packages
 ``` copy
 pnpm install prisma --save-dev
 ```
@@ -6,7 +6,7 @@ pnpm install prisma --save-dev
 ``` copy
 pnpm install @prisma/client 
 ```
-
+## Adding script
 Required scripts
 ```
 "postinstall": "prisma generate",
@@ -22,20 +22,7 @@ example:
   },
 ```
 
-
-For MongoDB:
-```prisma filename="schema.prisma"  copy
-generator client {
-    provider = "prisma-client-js"
-}
-
-datasource db {
-    provider = "mongodb"
-    url      = env("DATABASE_URL")
-}
-```
-
-
+## Setup Client
 ```ts filename="db.ts"  copy
 import { PrismaClient } from '@prisma/client'
 
@@ -50,4 +37,18 @@ export const prisma =
   })
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+```
+
+## Defining Prisma Schema
+
+For MongoDB:
+```prisma filename="schema.prisma"  copy
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
 ```
