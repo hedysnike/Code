@@ -2,18 +2,19 @@
 ```json filename="package.json"  copy
 "dependencies": {
 "aws-cdk-lib": "2.27.0",
-"constructs": "^10.1.36",
-"source-map-support": "^0.5.21"
 },
 "devDependencies": {
 "aws-cdk": "2.27.0",
 "aws-sdk": "^2.1152.0",
+"constructs": "^10.1.36",
 }
 ```
 
 ## Script:
+Add Following Script to package Json
+```
 "cdk": "cdk",
-
+```
 Example:
 ```json filename="package.json"  copy
   "scripts": {
@@ -159,7 +160,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 ## Upload Function Example
 ```tsx filename="index.tsx"  copy
-Export default function Example() {
+export default function Example() {
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
