@@ -1,7 +1,7 @@
 {
   "index": "Index",
-  "boilerplate": "Boilerplate",
   "libraries": "Libraries",
+  "boilerplate": "Boilerplate",
   "template": "Template",
   "frontend": "Frontend",
   "Prisma": "Prisma",
