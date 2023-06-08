@@ -18,35 +18,6 @@
 
 
 ## Burger 2
-import styles from './burger.module.css';
-import { useState } from 'react';
-
-export function Burger2() {
-  const [isFocused, setIsFocused] = useState(false);
-
-  return (
-    <button 
-      className={`${styles.group} ${isFocused ? styles.focus : ''}`}
-      onFocus={() => setIsFocused(true)}
-      onBlur={() => setIsFocused(false)}
-    >
-      <div className={styles.buttonInner}>
-        <div className={styles.icon}>
-          <div className={`${styles.bar} ${isFocused ? styles.bar1 : ''}`}></div>
-          <div className={`${styles.bar} ${isFocused ? styles.bar2 : ''}`}></div>
-          <div className={`${styles.bar} ${isFocused ? styles.bar3 : ''}`}></div>
-          <div className={`${styles.cross} ${isFocused ? styles.focus : ''}`}>
-            <div className={`${styles.crossBar} ${isFocused ? styles.rotate : ''}`}></div>
-            <div className={`${styles.crossBar} ${isFocused ? styles.counterRotate : ''}`}></div>
-          </div>
-        </div>
-      </div>
-    </button>
-  );
-}
-
- <Burger2 />
-
 ```tsx filename="Burger 2"  copy
     <div>
       <button className="relative group">
