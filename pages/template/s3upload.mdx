@@ -1,8 +1,20 @@
-Required Script:
+## Packages:
+```json filename="package.json"  copy
+"dependencies": {
+"aws-cdk-lib": "2.27.0",
+"constructs": "^10.1.36",
+"source-map-support": "^0.5.21"
+},
+"devDependencies": {
+"aws-cdk": "2.27.0",
+"aws-sdk": "^2.1152.0",
+}
+```
+
+## Script:
 "cdk": "cdk",
 
 Example:
-
 ```json filename="package.json"  copy
   "scripts": {
     "cdk": "cdk",
@@ -13,69 +25,71 @@ Example:
   },
 ```
 
-Required Packages:
-```json filename="package.json"  copy
-"devDependencies": {
-"aws-cdk": "2.27.0",
-"aws-sdk": "^2.1152.0",
-},
-"dependencies": {
-"aws-cdk-lib": "2.27.0",
-"constructs": "^10.1.36",
-"source-map-support": "^0.5.21"
-}
-```
-ENV KEYS
-```env filename=".env"  copy
-AWS_ACCESS_KEY_ID=yourkey
-AWS_SECRET_ACCESS_KEY=yourkey
-AWS_REGION=eu-central-1 or your AWS Region
-BUCKET_NAME=Your Bucket name
-```
-CODE:
-```ts filename="bin/aws-s3.ts"  copy
+## Bucket Setup
+### Step 1 - Set Bucket to Public
+<img src="https://i.imgur.com/INcL2Y0.png" alt="amazon screenshot"/>
+### Step 2 - Bucket Policy
+```json copy
 {
-  "app": "npx ts-node --prefer-ts-exts -P tsconfig-aws.json bin/aws-s3.ts",
-  "watch": {
-    "include": ["**"],
-    "exclude": [
-      "README.md",
-      "cdk*.json",
-      "**/*.d.ts",
-      "**/*.js",
-      "tsconfig.json",
-      "package*.json",
-      "pnpm-lock.yaml",
-      "node_modules",
-      "test"
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::audioplayertest1/*"
+        }
     ]
-  },
-  "context": {
-    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
-    "@aws-cdk/core:stackRelativeExports": true,
-    "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
-    "@aws-cdk/aws-lambda:recognizeVersionProps": true,
-    "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
-    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true,
-    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
-    "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
-    "@aws-cdk/core:checkSecretUsage": true,
-    "@aws-cdk/aws-iam:minimizePolicies": true,
-    "@aws-cdk/core:target-partitions": ["aws", "aws-cn"]
-  }
 }
 ```
 
-```ts filename="bin/aws-s3.ts"  copy
-#!/usr/bin/env node
-import "source-map-support/register";
-import * as cdk from "aws-cdk-lib";
-import { AwsS3Stack } from "../lib/aws-s3-stack";
+### Step 3 - Cors Setup
 
-const app = new cdk.App();
-new AwsS3Stack(app, "AwsS3Stack", {});
+```json copy
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "PUT",
+            "POST",
+            "DELETE"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [
+            "ETag"
+        ]
+    }
+]
 ```
 
+## ENV KEYS
+
+### Step 1 - Create IM User
+Create User on amazon at IM Page/Users/Add User
+
+### Step 2 - Add permissions
+<img src="https://i.imgur.com/F7wrRsx.png" alt="imscreenshot" />
+
+and copy your Access key and Secret Key at creation
+
+NOTE: Secret Key is shown only once when creating User
+
+### Step 3 - add ENV Keys 
+
+```env filename=".env"  copy
+AWS_ACCESS_KEY_ID=Your IM Key
+AWS_SECRET_ACCESS_KEY=Your IM Secret Key
+AWS_REGION=eu-central-1 or your S3 Bucket Region
+BUCKET_NAME=Your Bucket Name
+```
+
+## Lib
 ```ts filename="lib/aws-s3-stack.ts"  copy
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as s3 from "aws-cdk-lib/aws-s3";
@@ -117,8 +131,8 @@ export class AwsS3Stack extends cdk.Stack {
   }
 }
 ```
-
-```ts filename="upload-url.ts"  copy
+## API
+```ts filename="api/upload-url.ts"  copy
 import S3 from "aws-sdk/clients/s3";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -143,13 +157,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 }
 ```
 
-Front End upload function example for photos
-
+## Upload Function Example
 ```tsx filename="index.tsx"  copy
+Export default function Example() {
   const [uploadedImageUrl, setUploadedImageUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-
 
 
   const uploadPhoto = async (file: File | null) => {
@@ -186,4 +198,31 @@ Front End upload function example for photos
     uploadPhoto(selectedFile);
   }, [selectedFile]);
 
+    return (
+      <div> 
+
+      </div>
+    );
+}
+```
+
+## File input Example
+Custom
+```tsx  copy
+      <input
+        onChange={uploadPhoto}
+        type="file"
+        accept="image/png, image/jpeg"
+      />
+```
+
+With Mantine
+```tsx filename="index.tsx"  copy
+              <FileInput
+                value={selectedFile}
+                onChange={setSelectedFile}
+                placeholder="Pick file"
+                label="Select Image"
+                accept="image/png, image/jpeg"
+              />
 ```
