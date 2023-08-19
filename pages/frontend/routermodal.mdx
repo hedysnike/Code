@@ -1,0 +1,86 @@
+
+requirements:
+mantine
+
+
+## Modals
+
+### Default Modal 
+Modal Properties:
+Stepper / Close button
+Mid section 
+Action button at the bottom
+
+```tsx filename="Modal"  copy
+import { Separator } from "./ui/separator";
+import { ScrollArea } from "./ui/scroll-area";
+import Link from "next/link";
+import { Transition } from "@headlessui/react";
+import { Fragment } from "react";
+
+interface ModalProps {
+  isOpen?: boolean;
+}
+
+export function PaymentModal({ isOpen }: ModalProps) {
+
+
+  return (
+    <>
+  <Transition appear show={isOpen} as={Fragment}>
+    <div className="relative z-10">
+
+        <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-75"
+            enterFrom="opacity-0 scale-100"
+            enterTo="opacity-100 scale-100"
+            leave="ease-in duration-0"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <div className="z-40 box-content top-0 right-0 left-0 text-black fixed bg-white min-h-[100vh] w-[100vw] focus:outline-none transform transition-all">
+                
+                  <div>
+<div className="z-50 right-0 left-0 top-0 box-content text-black fixed bg-white h-[50px] w-[100vw] focus:outline-none transform transition-all">
+<div className="flex justify-between h-full items-center px-4">
+  
+<div>
+            Title {">"} Title2 {">"} Title3
+          </div>
+          <Link replace href='/' scroll={false} className="cursor-pointer text-[#4dc4d6] hover:brightness-125">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>            
+          </Link>
+</div>
+<Separator />
+  </div>
+                  </div>
+                  <ScrollArea className="h-[87vh] w-full translate-y-[50px]">
+           
+                  </ScrollArea>
+                          </div>
+          </Transition.Child>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-100"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="ease-in duration-0"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <div className="z-50 box-content bottom-0 right-0 left-0 fixed w-[100vw] focus:outline-none transform transition-all">
+            <div className="flex text-center px-5 gap-5 text-white w-full items-center justify-center">
+               <div className="py-2 bg-green-500 w-full">
+                 Action 
+                </div>
+              </div>
+                          </div>
+          </Transition.Child>
+
+    </div>
+  </Transition>
+    </>
+  );
+}
+```
