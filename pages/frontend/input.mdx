@@ -1,0 +1,64 @@
+
+
+Google Input
+```tsx copy
+import React, { useState } from 'react';
+
+interface InputProps {
+    value?: string;
+    setValue: React.Dispatch<React.SetStateAction<string | undefined>>;
+  }
+  
+
+export const GoogleInput = ({value, setValue} : InputProps) => {
+
+  return (
+    <div className="relative pt-2">
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        className={`block w-full px-4 pt-4 peer pb-1 outline-none ${value ? 'pt-6' : ''}`}
+      />
+      <label
+        className={`absolute top-3 pt-1 left-0 px-4 transition-all select-none ease-in-out pointer-events-none duration-300 ${value ? '-mt-3 text-xs' : 'peer-focus:-mt-3 peer-focus:text-xs text-lg'}`}
+      >
+        Your Label
+      </label>
+      <div className="absolute inset-x-0 translate-y-[1px] bottom-0 h-1 border-b-2 border-[#cacaca] pointer-events-none" />
+      <div className={`z-10 absolute inset-x-0 translate-y-[1px] bottom-0 h-1 border-b-2 border-black transform transition-transform duration-200 ease-out pointer-events-none ${value ? "scale-x-100" : "peer-focus:scale-x-100 scale-x-0"} `} />
+    </div>
+  );
+};
+```
+
+
+custum input with animated border
+```
+import { useTranslation } from "next-i18next";
+
+  type SelectProps = {
+    value?: string;
+    setValue: (value: string) => void;
+    placeholder?: string;
+  };
+  
+
+
+export function InputSelector({ value, setValue, placeholder } : SelectProps) {
+  const { t } = useTranslation("");
+
+  return (
+      <div className="relative">
+        <input
+          className="text-sm rounded-t border border-[#bbbbbb] px-4 py-[6px] peer text-black placeholder-[#000000a5] outline-none w-full"
+          type="text"
+          onChange={(e) => setValue(e.target.value)}
+          placeholder={t(`${placeholder}`)}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-1 border-b-2 border-black transform scale-x-0 transition-transform duration-200 ease-out pointer-events-none peer-focus:scale-x-100"></div>
+      </div>
+  );
+}
+
+```
